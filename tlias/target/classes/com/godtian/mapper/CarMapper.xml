@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.godtian.mapper.CarMapper">
+    <select id="list" resultType="com.godtian.pojo.Car">
+        select  c.*,d.name as dishName,d.img as img,d.price as price,u.username as username,u.name as name
+        from car c left join dish d on c.dish_id = d.id left join user u on c.user_id=u.id where user_id =#{id}
+        order by c.time desc
+    </select>
+</mapper>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.godtian.mapper.OrdersMapper">
+    <select id="getAll" resultType="com.godtian.pojo.Orders">
+        select o.*,u.name as name from orders o left join user u on o.user_id =u.id
+        order by  time desc
+    </select>
+    <select id="getDetail" resultType="com.godtian.pojo.OrdersDishes">
+        select o.*,d.name as dishName, d.price as price from order_dishes o left join dish d on o.dish_id=d.id where o.order_id=#{ordersId}
+    </select>
+</mapper> 
